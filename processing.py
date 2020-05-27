@@ -108,7 +108,8 @@ merged_df['Expected_profit'] = merged_df['Number of Bed-places'] * ( merged_df['
 
 # display a rank table
 print(merged_df.sort_values('Expected_profit', ascending=False).reset_index(drop=True).head(11))
-merged_df.sort_values('Expected_profit', ascending=False).reset_index(drop=True).head(11).to_csv('country ranking.csv')
+merged_df.sort_values('Expected_profit', ascending=False).reset_index(drop=True).head(11).to_csv('output/country ranking.csv')
+
 
 # visualize
 sns.set_context( font_scale=1.5)
@@ -116,12 +117,12 @@ ax = sns.scatterplot(x="Number of Bed-places", y="Percentage of individuals onli
                      data=merged_df)
 ax.text(1950480, 81, 'UK')
 ax.set_title("The Number of Bed-places vs Percentage of individuals online and its expected profit value")
-ax.get_figure().savefig("scatter plot.png")
+ax.get_figure().savefig("output/scatter plot.png") # export visualization
 
 
 # export merged result
 merged_df[['Percentage of individuals online', 'Number of Bed-places']] = merged_df[['Percentage of individuals online', 'Number of Bed-places']].astype('int')
-merged_df[['geo_time', 'Percentage of individuals online', 'Number of Bed-places' ]].rename(columns={'geo_time':'Country Code'}).to_csv('merged_csv.csv', index=False)
+merged_df[['geo_time', 'Percentage of individuals online', 'Number of Bed-places' ]].rename(columns={'geo_time':'Country Code'}).to_csv('output/merged_csv.csv', index=False)
 
 
 
